@@ -57,11 +57,12 @@ List<Widget> _listaItems(List<dynamic>? data, BuildContext context) {
       trailing: Icon(Icons.keyboard_arrow_right, color: Colors.blue),
       onTap: () {
 
-        final route = MaterialPageRoute(
-          builder: (context)  => AlertPage()
-        );
+        // final route = MaterialPageRoute(
+        //   builder: (context)  => AlertPage()
+        // );
 
-        Navigator.push(context, route);
+        // Navigator.push(context, route);
+        Navigator.pushNamed(context, opcion['ruta']);
       },
     );
 
