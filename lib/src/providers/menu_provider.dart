@@ -1,25 +1,22 @@
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
 
-
 class _MenuProvider {
   List<dynamic> opciones = [];
 
   _MenuProvider() {
-    cargarData();
+    //cargarData();
   }
 
-  cargarData() {
-    rootBundle.loadString('data/menu_opts.json')
-      .then((data) {
-        //print(data));
-        Map dataMap = json.decode(data);
+  // Promesa
+  Future<List<dynamic>> cargarData() async {
+    final response = await rootBundle.loadString('data/menu_opts.json')
+    Map dataMap = json.decode(response);
         print(dataMap['rutas']);
         opciones = dataMap['rutas'];
-
-    });
+    return opciones;
   }
 }
 
 // Sólo se expone la instancia
-final mennuProvider = new _MenuProvider();
+final menuProvider = new _MenuProvider();
