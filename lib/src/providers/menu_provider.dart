@@ -10,7 +10,7 @@ class _MenuProvider {
 
   // Promesa
   Future<List<dynamic>> cargarData() async {
-    final response = await rootBundle.loadString('data/menu_opts.json')
+    final response = await rootBundle.loadString('data/menu_opts.json');
     Map dataMap = json.decode(response);
         print(dataMap['rutas']);
         opciones = dataMap['rutas'];
