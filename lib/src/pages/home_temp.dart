@@ -34,12 +34,19 @@ class HomePageTemp extends StatelessWidget {
   }
 
   List<Widget> _crearItemsCorta() {
-    var widgets = opciones.map((opcion) => 
-    ListTile(
-      title: Text(opcion)
-    )).toList();
-
-    return widgets;
+    return opciones.map((opcion) => 
+      Column(
+        children: <Widget>[
+          ListTile(
+          title: Text(opcion),
+          subtitle: Text('Esta es la opcion $opcion'),
+          leading: Icon(Icons.book),
+          trailing: Icon(Icons.arrow_forward_ios),
+          ),
+          Divider()
+        ],
+      )
+      ).toList();
   }
   
 }
