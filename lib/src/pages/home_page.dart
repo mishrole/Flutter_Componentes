@@ -1,3 +1,4 @@
+import 'package:componentes/src/utils/icono_string_util.dart';
 import 'package:flutter/material.dart';
 import 'package:componentes/src/providers/menu_provider.dart';
 
@@ -51,7 +52,7 @@ List<Widget> _listaItems(List<dynamic>? data) {
   data?.forEach((opcion) {
     final widgetTemp = ListTile(
       title: Text(opcion['texto']),
-      leading: Icon(Icons.add_alert, color: Colors.blue),
+      leading: getIcon(opcion['icon']),
       trailing: Icon(Icons.keyboard_arrow_right, color: Colors.blue),
       onTap: () {
 
