@@ -14,6 +14,10 @@ class _InputPageState extends State<InputPage> {
   String _password = '';
   String _fecha = '';
 
+  List<String> _poderes = ['Volar', 'Rayos X', 'Super Fuerza'];
+
+    String _opcionSeleccionada = 'Seleccionar';
+
   TextEditingController _inputFieldDateController = new TextEditingController();
 
   @override
@@ -30,6 +34,8 @@ class _InputPageState extends State<InputPage> {
             _crearPassword(),
             Divider(),
             _crearFecha(context),
+            Divider(),
+            _crearDropdown(),
             Divider(),
             _crearPersona(),
           ],
@@ -52,13 +58,6 @@ class _InputPageState extends State<InputPage> {
         icon: Icon(Icons.account_circle)
       ),
       onChanged: (value) => setState(() { _nombre = value; }),
-    );
-  }
-
-  Widget _crearPersona() {
-    return ListTile(
-      title: Text('Nombre es: $_nombre'),
-      subtitle: Text('Email es: $_email y contraseña es: $_password')
     );
   }
 
@@ -129,5 +128,49 @@ class _InputPageState extends State<InputPage> {
         _inputFieldDateController.text = _fecha;
       });
     }
+  }
+
+  List<DropdownMenuItem<String>> getOpcionesDropdown() {
+    List<DropdownMenuItem<String>> lista = [];
+    _poderes.forEach((poder) {
+      lista.add(DropdownMenuItem(
+        child: Text(poder),
+        value: poder,
+      ));
+    });
+
+    return lista;
+  }
+
+  Widget _crearDropdown() {
+    return Row (
+      children: <Widget> [
+        Icon(Icons.select_all),
+        SizedBox(width: 30.0),
+        Expanded(
+          child: DropdownButton<String>(
+            // items: [],
+            value: _opcionSeleccionada,
+            items: getOpcionesDropdown(),
+            onChanged: (option) {
+              // print(option);
+              setState(() {
+                _opcionSeleccionada = option!;
+              });
+            },
+          ),
+        ),
+      ],
+    );
+    
+
+  }
+
+  Widget _crearPersona() {
+    return ListTile(
+      title: Text('Nombre es: $_nombre'),
+      subtitle: Text('Email es: $_email y contraseña es: $_password'),
+      trailing: Text(_opcionSeleccionada),
+    );
   }
 }
