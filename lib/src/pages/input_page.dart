@@ -16,7 +16,7 @@ class _InputPageState extends State<InputPage> {
 
   List<String> _poderes = ['Volar', 'Rayos X', 'Super Fuerza'];
 
-    String _opcionSeleccionada = 'Seleccionar';
+    String _opcionSeleccionada = 'Volar';
 
   TextEditingController _inputFieldDateController = new TextEditingController();
 
